@@ -1,0 +1,14 @@
+.login-form-wrapper {
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form__input {
+    margin-bottom: 20px;
+}
+
+.login-form__submit-btn {
+    width: 100px;
+}
