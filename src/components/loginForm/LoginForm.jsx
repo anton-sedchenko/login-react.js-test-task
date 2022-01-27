@@ -2,8 +2,11 @@ import React from 'react';
 import './LoginForm.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { login } from '../../actions/user';
 
 const LoginForm = () => {
+    const dispatch = useDispatch();
     const {handleSubmit, handleChange, values, touched, errors, handleBlur} = useFormik({
         initialValues: {
             email: '',
@@ -14,7 +17,7 @@ const LoginForm = () => {
             password: Yup.string().min(5, 'Password should be longer than 5 characters').required('Password is required'),
         }),
         onSubmit: ({email, password}) => {
-            alert(`login: ${email}, password: ${password}`);
+            dispatch(login({email, password}));
         }
     });
 
