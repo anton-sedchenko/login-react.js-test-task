@@ -9,7 +9,7 @@ import { Navigate, Route } from 'react-router';
 import Header from '../header/Header';
 
 function App() {
-    const [isAuth, setIsAuth] = useState(null);
+    const [isAuth, setIsAuth] = useState(false);
 
     useEffect(() => {
         const isUserLogin = JSON.parse(localStorage.getItem('appSettings')).isAuth;
