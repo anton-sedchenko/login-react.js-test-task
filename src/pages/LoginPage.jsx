@@ -1,21 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import LoginForm from '../components/loginForm/LoginForm';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../store/authReducer';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const isAuth = useSelector(state => {
-        console.log(state);
-        // return state.isAuth;
-        return {};
-    })
+    const isAuth = useSelector(state => state.isAuth);
 
-    // useEffect(() => {
-    //     isAuth && navigate('/chat');
-    // }, [isAuth]);
+    useEffect(() => {
+        isAuth && navigate('/chat');
+    }, [isAuth]);
 
     return (
         <div>

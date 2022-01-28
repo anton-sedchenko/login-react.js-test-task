@@ -21,6 +21,8 @@ const authReducer = (state = defaultState, action) => {
             localStorage.setItem('appSettings', JSON.stringify({...defaultState}));
 
             return defaultState;
+        default:
+            return state;
     }
 }
 

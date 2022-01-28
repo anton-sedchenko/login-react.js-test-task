@@ -6,7 +6,6 @@ import ChatPage from "../../pages/ChatPage";
 import HomePage from "../../pages/HomePage";
 import SettingsPage from "../../pages/SettingsPage";
 import {Navigate, Route} from "react-router";
-import {useSelector} from "react-redux";
 
 function App() {
     const [isAuth, setIsAuth] = useState(null);
