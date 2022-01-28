@@ -1,0 +1,45 @@
+.header {
+    height: 60px;
+    width: 98%;
+    background-color: #555B6E;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: #FFFFFF;
+    position: fixed;
+    z-index: 1000;
+}
+
+.header__left-side-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+}
+
+.header__logo {
+    font-size: 36px;
+}
+
+.burger-menu-wrapper {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.header__user-info-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar-wrapper {
+    margin-right: 10px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+

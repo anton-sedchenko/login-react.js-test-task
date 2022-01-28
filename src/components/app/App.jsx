@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import LoginPage from '../../pages/LoginPage';
+import LoginPage from '../../pages/loginPage/LoginPage';
 import { Routes } from 'react-router-dom';
-import ChatPage from "../../pages/ChatPage";
-import HomePage from "../../pages/HomePage";
-import SettingsPage from "../../pages/SettingsPage";
-import {Navigate, Route} from "react-router";
+import ChatPage from '../../pages/chatPage/ChatPage';
+import HomePage from '../../pages/homePage/HomePage';
+import SettingsPage from '../../pages/settingsPage/SettingsPage';
+import { Navigate, Route } from 'react-router';
+import Header from '../header/Header';
 
 function App() {
     const [isAuth, setIsAuth] = useState(null);
@@ -17,23 +18,22 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
-                <Routes>
-                        {
-                            isAuth
-                            ?
-                            <>
-                                <Route path="/login" element={<LoginPage />} />
-                                <Route path="/chat" element={<ChatPage />} />
-                                <Route path="/home" element={<HomePage />} />
-                                <Route path="/settings" element={<SettingsPage />} />
-                            </>
-                            :
-                            <Route path="/login" element={<LoginPage />} />
-                        }
-                    <Route path="*" element={<Navigate to={isAuth ? "/chat" : "/login"} />} />
-                </Routes>
-            </header>
+            <Header />
+            <Routes>
+                {
+                    isAuth
+                    ?
+                    <>
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/chat" element={<ChatPage />} />
+                        <Route path="/home" element={<HomePage />} />
+                        <Route path="/settings" element={<SettingsPage />} />
+                    </>
+                    :
+                    <Route path="/login" element={<LoginPage />} />
+                }
+                <Route path="*" element={<Navigate to={isAuth ? "/chat" : "/login"} />} />
+            </Routes>
         </div>
     );
 }

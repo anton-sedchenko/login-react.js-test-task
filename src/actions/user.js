@@ -3,7 +3,9 @@ import { setUser } from '../store/authReducer';
 const BD = [
     {
         email: 'test@gmail.com',
-        password: 'leroyWasHere'
+        password: 'kilroyWasHere',
+        userAvatar: 'https://i.pinimg.com/564x/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
+        userName: 'James Kilroy'
     }
 ]
 
