@@ -7,14 +7,16 @@ import HomePage from '../../pages/homePage/HomePage';
 import SettingsPage from '../../pages/settingsPage/SettingsPage';
 import { Navigate, Route } from 'react-router';
 import Header from '../header/Header';
+import { useSelector } from 'react-redux';
 
 function App() {
-    const [isAuth, setIsAuth] = useState(false);
+    const isUserLogin = useSelector(state => state.isAuth);
+    const [isAuth, setIsAuth] = useState(isUserLogin);
+
 
     useEffect(() => {
-        const isUserLogin = JSON.parse(localStorage.getItem('appSettings')).isAuth;
         isUserLogin ? setIsAuth(true) : setIsAuth(false);
-    });
+    }, [isUserLogin]);
 
     return (
         <div className="App">
