@@ -30,6 +30,7 @@ const LoginPage = () => {
                     </button>
                 </div>
                 <div style={{paddingTop: '40px'}}>
+                    <h3>Credentials:</h3>
                     <p>login: test@gmail.com</p>
                     <p>pass: kilroyWasHere</p>
                 </div>

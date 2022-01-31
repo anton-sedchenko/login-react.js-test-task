@@ -3,6 +3,18 @@ body {
 }
 
 .App {
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Roboto', sans-serif;
+    display: flex;
+}
+
+.main-content-wrapper {
+    width: 100%;
+    height: auto;
+}
+
+main {
+    height: 100%;
+    padding-bottom: 80px;
+    box-sizing: border-box;
 }

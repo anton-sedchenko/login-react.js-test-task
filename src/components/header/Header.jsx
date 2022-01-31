@@ -1,13 +1,13 @@
 import React from 'react';
 import './Header.css';
 import { MenuOutlined } from '@ant-design/icons';
-import {useSelector} from "react-redux";
+import { useSelector } from 'react-redux';
 
 const Header = () => {
     const userData = useSelector(state => state.currentUser);
 
     return (
-        <div className="header">
+        <header className="header">
             <div className="header__left-side-container">
                 <div className="logo-wrapper">
                     <span className="header__logo">Logo</span>
@@ -30,7 +30,7 @@ const Header = () => {
                         : null
                 }
             </div>
-        </div>
+        </header>
     );
 };
 
