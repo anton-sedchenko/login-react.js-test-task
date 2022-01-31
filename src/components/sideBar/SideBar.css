@@ -1,6 +1,40 @@
-.sideBar-wrapper {
+.sidebar-wrapper {
     width: 60px;
     height: auto;
     border: 1px solid green;
-    padding-top: 60px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 41px;
+}
+
+.sidebar__page-link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar__page-link-wrapper {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebar__page-link-wrapper:hover {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar__page-link-wrapper--active {
+    background-color: #89B0AE;
+}
+
+.sidebar__logout-container {
+    align-self: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }

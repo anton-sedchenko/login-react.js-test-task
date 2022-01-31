@@ -1,5 +1,33 @@
 .footer {
+    box-sizing: border-box;
+    padding-top: 20px;
     height: 80px;
     margin-top: -80px;
     background-color: #555B6E;
+    text-align: center;
+    font-size: 10px;
+}
+
+.footer__page-link-container {
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.footer__page-link,
+.footer__page-link:active,
+.footer__page-link:hover,
+.footer__page-link:visited {
+    cursor: pointer;
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.footer__page-link:hover {
+    text-shadow: 0 1px 1px black;
+}
+
+.footer__page-link:last-child {
+    margin-right: 0;
 }

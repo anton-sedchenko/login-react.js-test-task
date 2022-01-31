@@ -1,10 +1,11 @@
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk';
+import { isUserLoggedIn } from '../ustils/utils';
 
 const defaultState = {
         currentUser: {},
-        isAuth: false
+        isAuth: isUserLoggedIn()
 }
 
 const SET_USER = 'SET_USER';
@@ -18,9 +19,10 @@ const authReducer = (state = defaultState, action) => {
 
             return appSettings;
         case LOG_OUT:
-            localStorage.setItem('appSettings', JSON.stringify({...defaultState}));
+            const newState = {...defaultState, isAuth: false};
+            localStorage.setItem('appSettings', JSON.stringify(newState));
 
-            return defaultState;
+            return newState;
         default:
             return state;
     }

@@ -15,7 +15,6 @@ function App() {
     const isUserLogin = useSelector(state => state.isAuth);
     const [isAuth, setIsAuth] = useState(isUserLogin);
 
-
     useEffect(() => {
         isUserLogin ? setIsAuth(true) : setIsAuth(false);
     }, [isUserLogin]);
@@ -23,7 +22,7 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <SideBar />
+            {isAuth && <SideBar />}
             <div className="main-content-wrapper">
                 <main>
                     <Routes>
