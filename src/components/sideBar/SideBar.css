@@ -24,12 +24,31 @@
     cursor: pointer;
 }
 
+.sidebar__page-link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar__page-link {
+    color: black;
+}
+
+.sidebar__page-link:active,
+.sidebar__page-link:hover,
+.sidebar__page-link:visited {
+    text-decoration: none;
+}
+
 .sidebar__page-link-wrapper:hover {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.sidebar__page-link-wrapper--active {
+.sidebar__page-link--active {
     background-color: #89B0AE;
+    color: #FFFFFF;
 }
 
 .sidebar__logout-container {
