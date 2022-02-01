@@ -22,6 +22,7 @@
 .sidebar__page-link--active {
     background-color: #89B0AE;
     text-decoration: none;
+    transition: 350ms;
 }
 
 .sidebar__logout-container {
