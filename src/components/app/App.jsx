@@ -12,12 +12,12 @@ import SideBar from '../sideBar/SideBar';
 import Footer from '../footer/Footer';
 
 function App() {
-    const isUserLogin = useSelector(state => state.authReducer.isAuth);
-    const [isAuth, setIsAuth] = useState(isUserLogin);
+    const isUserLoggedIn = useSelector(state => state.authReducer.isAuth);
+    const [isAuth, setIsAuth] = useState(isUserLoggedIn);
 
     useEffect(() => {
-        isUserLogin ? setIsAuth(true) : setIsAuth(false);
-    }, [isUserLogin]);
+        isUserLoggedIn ? setIsAuth(true) : setIsAuth(false);
+    }, [isUserLoggedIn]);
 
     return (
         <div className="App">

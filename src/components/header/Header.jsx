@@ -6,6 +6,7 @@ import { changeSideBarState } from '../../store/sideBarReducer';
 
 const Header = () => {
     const userData = useSelector(state => state.authReducer.currentUser);
+    const isUserLoggedIn = useSelector(state => state.authReducer.isAuth);
     const isSideBarWide = useSelector(state => state.sideBarReducer.isSideBarWide);
     const dispatch = useDispatch();
 
@@ -15,9 +16,13 @@ const Header = () => {
                 <div className="logo-wrapper">
                     <span className="header__logo">Logo</span>
                 </div>
-                <div className="burger-menu-wrapper">
-                    <MenuOutlined onClick={() => dispatch(changeSideBarState(!isSideBarWide))} />
-                </div>
+                {
+                    isUserLoggedIn
+                    &&
+                    <div className="burger-menu-wrapper">
+                        <MenuOutlined onClick={() => dispatch(changeSideBarState(!isSideBarWide))} />
+                    </div>
+                }
             </div>
             <div className="header__user-info-wrapper">
                 <div className="user-avatar-wrapper">
