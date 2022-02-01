@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Footer.css';
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 const Footer = () => {
-    const isUserLogin = useSelector(state => state.isAuth);
-    // const [isAuth, setIsAuth] = useState(isUserLogin);
+    const isUserLogin = useSelector(state => state.authReducer.isAuth);
 
     return (
         <footer className="footer">

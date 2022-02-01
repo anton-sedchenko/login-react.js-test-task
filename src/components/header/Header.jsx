@@ -1,10 +1,13 @@
 import React from 'react';
 import './Header.css';
 import { MenuOutlined } from '@ant-design/icons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeSideBarState } from '../../store/sideBarReducer';
 
 const Header = () => {
-    const userData = useSelector(state => state.currentUser);
+    const userData = useSelector(state => state.authReducer.currentUser);
+    const isSideBarWide = useSelector(state => state.sideBarReducer.isSideBarWide);
+    const dispatch = useDispatch();
 
     return (
         <header className="header">
@@ -13,7 +16,7 @@ const Header = () => {
                     <span className="header__logo">Logo</span>
                 </div>
                 <div className="burger-menu-wrapper">
-                    <MenuOutlined />
+                    <MenuOutlined onClick={() => dispatch(changeSideBarState(!isSideBarWide))} />
                 </div>
             </div>
             <div className="header__user-info-wrapper">

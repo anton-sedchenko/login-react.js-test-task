@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const isAuth = useSelector(state => state.isAuth);
+    const isAuth = useSelector(state => state.authReducer.isAuth);
 
     useEffect(() => {
         isAuth && navigate('/chat');

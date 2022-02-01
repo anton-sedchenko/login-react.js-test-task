@@ -1,17 +1,31 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './SideBar.css';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import { logOut } from '../../store/authReducer';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import MessageIcon from '@mui/icons-material/Message';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { CHAT_PAGE_PATH, HOME_PAGE_PATH, SETTINGS_PAGE_PATH } from '../../ustils/utils';
+import styled from 'styled-components';
+
+const SideBarWrapper = styled.div`
+    width: ${({isSideBarWide}) => (isSideBarWide ? '300px' : '60px')};
+    height: auto;
+    transition: 350ms;
+    border: 1px solid green;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 41px;
+`;
 
 const SideBar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const isSideBarWide = useSelector(state => state.sideBarReducer.isSideBarWide);
     const [homePageLinkClass, setHomePageLinkClass] = useState('');
     const [chatPageLinkClass, setChatPageLinkClass] = useState('');
     const [settingsPageLinkClass, setSettingsPageLinkClass] = useState('');
@@ -42,7 +56,7 @@ const SideBar = () => {
     }, [window.location.pathname])
 
     return (
-        <div className="sidebar-wrapper">
+        <SideBarWrapper isSideBarWide={isSideBarWide}>
             <div className="sidebar__page-links-container">
                 <div className="sidebar__page-link-wrapper">
                     <Link to="/home" className={`sidebar__page-link ${homePageLinkClass}`}
@@ -86,7 +100,7 @@ const SideBar = () => {
                     }}
                 />
             </div>
-        </div>
+        </SideBarWrapper>
     );
 };
 
