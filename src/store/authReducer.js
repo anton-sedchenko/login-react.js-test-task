@@ -11,7 +11,11 @@ const LOG_OUT = 'LOG_OUT';
 export const authReducer = (state = defaultState, action) => {
     switch (action.type) {
         case SET_USER:
-            const appSettings = {...JSON.parse(localStorage.getItem('appSettings')), currentUser: action.currentUser, isAuth: true};
+            const appSettings = {
+                ...JSON.parse(localStorage.getItem('appSettings')),
+                currentUser: {userName: action.currentUser.userName, userAvatar: action.currentUser.userAvatar},
+                isAuth: true
+            };
             localStorage.setItem('appSettings', JSON.stringify(appSettings));
 
             return appSettings;

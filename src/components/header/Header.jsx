@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeSideBarState } from '../../store/sideBarReducer';
 
 const Header = () => {
-    const userData = useSelector(state => state.authReducer.currentUser);
+    const userData = JSON.parse(localStorage.getItem('appSettings')).currentUser;
     const isUserLoggedIn = useSelector(state => state.authReducer.isAuth);
     const isSideBarWide = useSelector(state => state.sideBarReducer.isSideBarWide);
     const dispatch = useDispatch();
