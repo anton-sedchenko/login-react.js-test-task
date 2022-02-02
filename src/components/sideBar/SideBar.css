@@ -21,6 +21,7 @@
 
 .sidebar__page-link--active {
     background-color: #89B0AE;
+    color: #FFFFFF;
     text-decoration: none;
     transition: 350ms;
 }
