@@ -1,4 +1,4 @@
-import { setUser } from '../store/authReducer';
+import {setErrorUserNotFound, setUser, unsetErrorUserNotFound} from '../store/authReducer';
 
 const BD = [
     {
@@ -27,7 +27,12 @@ export const login = (loginUserCreds) => {
                 return currentUser;
             };
             currentUser = response();
-            currentUser ? dispatch(setUser(currentUser)) : alert('User not found');
+            if (currentUser) {
+                dispatch(setUser(currentUser));
+            } else {
+                dispatch(setErrorUserNotFound());
+                setTimeout(() => dispatch(unsetErrorUserNotFound()), 3000);
+            }
         } catch(e) {
             console.log(e);
         }

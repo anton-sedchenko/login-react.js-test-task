@@ -1,12 +1,16 @@
+.sidebar {
+    color: #4A4A4A;
+}
+
 .sidebar__links-container {
     display: flex;
     flex-direction: column;
 }
 
 .sidebar__page-link {
-    color: black;
     font-size: 16px;
     text-decoration: none;
+    color: #4A4A4A;
 }
 
 .sidebar__page-link-text {
@@ -29,4 +33,29 @@
 .sidebar__logout-container {
     height: 80px;
     cursor: pointer;
+}
+
+.user-info-container {
+    display: flex;
+    align-items: center;
+    padding: 18px 15px 8px;
+}
+
+.user-avatar {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 479px) {
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: -60px;
+        background-color: #FFFFFF;
+        height: 100%;
+    }
+
+    .sidebar--active {
+        left: 5%;
+        width: 95%;
+    }
 }

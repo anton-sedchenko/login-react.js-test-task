@@ -30,6 +30,13 @@
 .header__user-info-wrapper {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.header__user-info-container {
+    display: flex;
+    align-items: center;
 }
 
 .user-avatar-wrapper {
@@ -42,4 +49,16 @@
     border-radius: 50%;
 }
 
+.user-name {
+    margin-right: 5px;
+}
 
+@media screen and (max-width: 479px) {
+    .header__user-info-wrapper {
+        display: none;
+    }
+
+    .header__left-side-container {
+        width: 100%;
+    }
+}

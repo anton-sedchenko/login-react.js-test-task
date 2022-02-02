@@ -5,6 +5,14 @@
     background-color: #555B6E;
     text-align: center;
     font-size: 10px;
+    color: #FFFFFF;
+}
+
+.footer-without-login {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 20px;
 }
 
 .footer__page-link-container {
@@ -20,7 +28,7 @@
     cursor: pointer;
     margin-right: 20px;
     text-decoration: none;
-    color: black;
+    color: #FFFFFF;
 }
 
 .footer__page-link:hover {

@@ -7,7 +7,7 @@ const Footer = () => {
     const isUserLogin = useSelector(state => state.authReducer.isAuth);
 
     return (
-        <footer className="footer">
+        <footer className={isUserLogin ? 'footer' : 'footer footer-without-login'}>
             {
                 isUserLogin
                 &&

@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 const LoginPage = () => {
     const navigate = useNavigate();
     const isAuth = useSelector(state => state.authReducer.isAuth);
+    const isUserNotFound = useSelector(state => state.authReducer.isUserNotFound);
 
     useEffect(() => {
         isAuth && navigate('/chat');
@@ -15,6 +16,9 @@ const LoginPage = () => {
     return (
         <div className="login-page__content-wrapper">
             <div className="auth-form-wrapper">
+                <div className="auth-form__error-container">
+                    {isUserNotFound && <span>User not found</span>}
+                </div>
                 <LoginForm />
                 <div style={{textAlign: 'center', paddingTop: '40px'}}>
                     <h3>Credentials:</h3>

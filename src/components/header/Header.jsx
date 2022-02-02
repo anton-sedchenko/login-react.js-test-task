@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import { MenuOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSideBarState } from '../../store/sideBarReducer';
+import UserMenu from '../userMenu/UserMenu';
+import CaretUpOutlined from '@ant-design/icons/lib/icons/CaretUpOutlined';
+import CaretDownOutlined from '@ant-design/icons/lib/icons/CaretDownOutlined';
 
 const Header = () => {
-    const userData = JSON.parse(localStorage.getItem('appSettings')).currentUser;
+    const userData = JSON.parse(localStorage.getItem('appSettings'))?.currentUser || {};
     const isUserLoggedIn = useSelector(state => state.authReducer.isAuth);
     const isSideBarWide = useSelector(state => state.sideBarReducer.isSideBarWide);
     const dispatch = useDispatch();
+    const [isUserMenuShown, setIsUserMenuShown] = useState(false);
 
     return (
         <header className="header">
@@ -20,24 +24,28 @@ const Header = () => {
                     isUserLoggedIn
                     &&
                     <div className="burger-menu-wrapper">
-                        <MenuOutlined onClick={() => dispatch(changeSideBarState(!isSideBarWide))} />
+                        <MenuOutlined onClick={() => {
+                            dispatch(changeSideBarState(!isSideBarWide));
+                        }} />
                     </div>
                 }
             </div>
-            <div className="header__user-info-wrapper">
-                <div className="user-avatar-wrapper">
-                    {
-                        userData.userAvatar
-                        ? <img src={userData.userAvatar} className="user-avatar" alt="user avatar"/>
-                        : null
-                    }
+            {
+                isUserLoggedIn
+                &&
+                <div
+                    className="header__user-info-wrapper"
+                    onMouseEnter={() => setIsUserMenuShown(true)}
+                    onMouseLeave={() => setIsUserMenuShown(false)}
+                >
+                    {isUserMenuShown && <UserMenu />}
+                    <div className="header__user-info-container">
+                        <img src={userData.userAvatar} className="user-avatar" alt="user avatar"/>
+                        <span className="user-name">{userData.userName}</span>
+                    </div>
+                    {isUserMenuShown ? <CaretUpOutlined /> : <CaretDownOutlined />}
                 </div>
-                {
-                    userData.userName
-                        ? <span className="user-name">{userData.userName}</span>
-                        : null
-                }
-            </div>
+            }
         </header>
     );
 };
