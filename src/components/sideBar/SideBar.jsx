@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './SideBar.css';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import { logOut } from '../../store/authReducer';
@@ -36,74 +36,49 @@ const SideBar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const isSideBarWide = useSelector(state => state.sideBarReducer.isSideBarWide);
-    const [homePageLinkClass, setHomePageLinkClass] = useState('');
-    const [chatPageLinkClass, setChatPageLinkClass] = useState('');
-    const [settingsPageLinkClass, setSettingsPageLinkClass] = useState('');
-
-    useEffect(() => {
-        const currentPath = window.location.pathname;
-        switch (currentPath) {
-            case HOME_PAGE_PATH:
-                setHomePageLinkClass('sidebar__page-link--active');
-                setChatPageLinkClass('');
-                setSettingsPageLinkClass('');
-                break;
-            case CHAT_PAGE_PATH:
-                setHomePageLinkClass('');
-                setChatPageLinkClass('sidebar__page-link--active');
-                setSettingsPageLinkClass('');
-                break;
-            case SETTINGS_PAGE_PATH:
-                setHomePageLinkClass('');
-                setChatPageLinkClass('');
-                setSettingsPageLinkClass('sidebar__page-link--active');
-                break;
-            default:
-                setHomePageLinkClass('');
-                setChatPageLinkClass('sidebar__page-link--active');
-                setSettingsPageLinkClass('');
+    const currentPath = window.location.pathname;
+    const navLinks =[
+        {
+            href: HOME_PAGE_PATH,
+            icon: <HomeIcon />,
+            linkName: 'Home',
+            key: 'Home'
+        },
+        {
+            href: CHAT_PAGE_PATH,
+            icon: <MessageIcon />,
+            linkName: 'Chat',
+            key: 'Chat'
+        },
+        {
+            href: SETTINGS_PAGE_PATH,
+            icon: <SettingsIcon />,
+            linkName: 'Settings',
+            key: 'Settings'
         }
-    }, [window.location.pathname])
+    ]
 
     return (
         <SideBarWrapper isSideBarWide={isSideBarWide}>
             <div className="sidebar__links-container">
-                <Link to="/home" className={`sidebar__page-link ${homePageLinkClass}`}
-                      onClick={() => {
-                          setHomePageLinkClass('sidebar__page-link--active');
-                          setChatPageLinkClass('');
-                          setSettingsPageLinkClass('');
-                      }}
-                >
-                    <SideBarLinkContent isSideBarWide={isSideBarWide}>
-                        <HomeIcon />
-                        {isSideBarWide && <span className="sidebar__page-link-text">Home</span>}
-                    </SideBarLinkContent>
-                </Link>
-                <Link to="/chat" className={`sidebar__page-link ${chatPageLinkClass}`}
-                      onClick={() => {
-                          setHomePageLinkClass('');
-                          setChatPageLinkClass('sidebar__page-link--active');
-                          setSettingsPageLinkClass('');
-                      }}
-                >
-                    <SideBarLinkContent isSideBarWide={isSideBarWide}>
-                        <MessageIcon />
-                        {isSideBarWide && <span className="sidebar__page-link-text">Chat</span>}
-                    </SideBarLinkContent>
-                </Link>
-                <Link to="/settings" className={`sidebar__page-link ${settingsPageLinkClass}`}
-                      onClick={() => {
-                          setHomePageLinkClass('');
-                          setChatPageLinkClass('');
-                          setSettingsPageLinkClass('sidebar__page-link--active');
-                      }}
-                >
-                    <SideBarLinkContent isSideBarWide={isSideBarWide}>
-                        <SettingsIcon />
-                        {isSideBarWide && <span className="sidebar__page-link-text">Settings</span>}
-                    </SideBarLinkContent>
-                </Link>
+                {navLinks.map((item) => {
+                    return (
+                        <Link
+                            key={item.key}
+                            to={item.href}
+                            className={
+                                currentPath === item.href
+                                ? 'sidebar__page-link sidebar__page-link--active'
+                                : 'sidebar__page-link'
+                            }
+                        >
+                            <SideBarLinkContent isSideBarWide={isSideBarWide}>
+                                {item.icon}
+                                {isSideBarWide && <span className="sidebar__page-link-text">{item.linkName}</span>}
+                            </SideBarLinkContent>
+                        </Link>
+                    );
+                })}
             </div>
             <div className="sidebar__logout-container">
                 <SideBarLinkContent
