@@ -4,7 +4,7 @@ const defaultState = {
     currentUser: {},
     isAuth: isUserLoggedIn(),
     isUserNotFound: false
-}
+};
 
 const SET_USER = 'SET_USER';
 const LOG_OUT = 'LOG_OUT';

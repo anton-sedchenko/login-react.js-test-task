@@ -19,7 +19,8 @@ const UserMenu = () => {
             name: 'Edit',
             key: 'Edit'
         }
-    ]
+    ];
+
     return (
         <div className="user-menu-wrapper">
             <ul className="user-menu-list">

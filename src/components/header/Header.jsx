@@ -40,7 +40,7 @@ const Header = () => {
                 >
                     {isUserMenuShown && <UserMenu />}
                     <div className="header__user-info-container">
-                        <img src={userData.userAvatar} className="user-avatar" alt="user avatar"/>
+                        <img src={userData.userAvatar} className="user-avatar" alt="user avatar" />
                         <span className="user-name">{userData.userName}</span>
                     </div>
                     {isUserMenuShown ? <CaretUpOutlined /> : <CaretDownOutlined />}

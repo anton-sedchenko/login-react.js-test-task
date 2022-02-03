@@ -1,4 +1,4 @@
-import {setErrorUserNotFound, setUser, unsetErrorUserNotFound} from '../store/authReducer';
+import { setErrorUserNotFound, setUser, unsetErrorUserNotFound } from '../store/authReducer';
 
 const BD = [
     {
